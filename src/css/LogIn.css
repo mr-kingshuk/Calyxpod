@@ -1,0 +1,30 @@
+#imageSide{
+  height: 100vh;
+  width: 55vw;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+#imageSide img, .image_college img{
+  height: 100%;
+  object-fit: contain;
+}
+
+
+.image_college{
+  position: absolute;
+  top: 35px;
+  left: 35px;
+
+  width: 95px;
+}
+
+/* .image{
+   display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 693px;
+} */
