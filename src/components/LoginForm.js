@@ -74,8 +74,7 @@ const LoginForm = () => {
         // console.log("LOGIN SUCCESSFUL");
         // console.log(user.email.split("@")[1] + "ahdadghad");
         if (
-          user.email.split("@")[1] === "lnmiit.ac.in" ||
-          user.email === "prateekjakhar123@gmail.com"
+          user.email.split("@")[1] === "lnmiit.ac.in"
         ) {
           // console.log("abc");
           success = true;
@@ -120,10 +119,15 @@ const LoginForm = () => {
       localStorage.setItem("userName", user.displayName);
       localStorage.setItem("photoURL", user.photoURL);
       localStorage.setItem("usermail", user.email);
+      if (user.email === "20ucc059@lnmiit.ac.in"){
+        localStorage.setItem("acc", "ad");
+      }else{
+        localStorage.setItem("acc", "pe");
+      }
 
       const querySnapshot2 = await getDoc(doc(db, "people", user.email));
-      if (user.email === "prateekjakhar123@gmail.com") {
-        navigate("/admin", { replace: true });
+      if (user.email === "20ucc059@lnmiit.ac.in") {
+        navigate("/", { replace: true });
       } else {
         if (querySnapshot2.exists()) {
           navigate("/", { replace: true });
@@ -212,7 +216,7 @@ const LoginForm = () => {
               <input type="checkbox" />
               <span style={{ marginLeft: "5px" }}>Remember me</span>
             </div>
-            <span id="spanForgotPassword">Forgot Password?</span>
+            {/* <span id="spanForgotPassword">Forgot Password?</span> */}
           </div>
 
           <button style={{ border: "1px solid #41337A" }} onClick={emailSignIn}>

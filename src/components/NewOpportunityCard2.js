@@ -28,6 +28,7 @@ const NewOpportunityCard = ({ info }) => {
   let usermail, querySnapshot, branchString;
 
   const handleApply = async () => {
+    console.log(info);
     const docRef = await addDoc(collection(db, "applications"), {
       company_name: info.company_name,
       date: info.date,
@@ -36,9 +37,10 @@ const NewOpportunityCard = ({ info }) => {
       stipend: info.stipend,
       title: info.title,
       oppor_id: info.doc_name,
+      userEmail: localStorage.getItem("usermail") 
     });
     const app_id = docRef.id;
-    console.log(app_id);
+    // console.log(app_id); 
     // console.log(info.id + " info");
     await setDoc(doc(db, "applications", app_id), {
       company_name: info.company_name,
@@ -54,6 +56,7 @@ const NewOpportunityCard = ({ info }) => {
       cce: info.cce,
       ece: info.ece,
       me: info.me,
+      userEmail: localStorage.getItem("usermail") 
     });
 
     usermail = localStorage.getItem("usermail");
@@ -172,6 +175,7 @@ const NewOpportunityCard = ({ info }) => {
           // position: "absolute",
           // right: "621px",
           width: "877px",
+          marginBottom : "25px"
         }}
       >
         <div
@@ -215,17 +219,12 @@ const NewOpportunityCard = ({ info }) => {
         )}
       </div>
 
-      <div className="Nbottom">
-        {/* <span style={{ marginRight: "30px", marginTop: "15px" }}>
-          {diffDays} days ago
-        </span> */}
+      {/* <div className="Nbottom">
         <span
           style={{ marginRight: "0px", marginTop: "15px", color: "#D7263D" }}
         >
-          {/* <Icon enabled name="clock outline" />
-          Registration Ended {diffEndDays} days ago */}
         </span>
-      </div>
+      </div> */}
     </div>
   );
 };

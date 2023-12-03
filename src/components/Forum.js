@@ -41,6 +41,8 @@ const Forum = () => {
     });
   };
 
+  console.log(data);
+
   useEffect(() => {
     fetchPost();
   }, []);

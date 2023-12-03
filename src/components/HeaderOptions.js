@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 // import { Icon } from 'semantic-ui-react'
 import "../css/HeaderOptions.css";
 import LeftHeader from "./LeftHeader";
@@ -16,76 +16,96 @@ import offCampus from "../assets/off.png";
 import resume from "../assets/Resume.png";
 
 const HeaderOptions = () => {
+  const type = localStorage.getItem("acc");
   return (
     <div className="menu">
-      <Link to={"/"}>
+      <NavLink to={"/"} setActiveClass= "active">
         <div classname="Dashboard" style={{ marginLeft: "-89px" }}>
           <img classname="image" src={dashimg} alt="" />
           <span className="header-button">Dashboard</span>
         </div>
-      </Link>
+      </NavLink>
 
-      <Link to={"/people"}>
+      <NavLink to={"/people"} setActiveClass= "active">
         <div className="People" style={{ marginLeft: "-120px" }}>
           <img classname="image" style={{}} src={twopeople} alt="" />
           <span className="header-button">People</span>
         </div>
-      </Link>
+      </NavLink>
 
-      {/* <Link to={'/forum'}>
+      {/* <NavLink to={'/forum'}>
         <div classname="Forum" style={{ marginLeft: "-120px" }}>
           <img classname="image" src={forum} alt="" />
           <span className="header-button">Forum</span>
         </div>
-      </Link> */}
+      </NavLink> */}
 
-      {/* <Link to={"/"}>
+      {/* <NavLink to={"/"}>
         <div classname="messages" style={{ marginLeft: "-93px" }}>
           <img classname="image" src={Vector} alt="" />
           <span className="header-button">Messages</span>
         </div>
-      </Link> */}
+      </NavLink> */}
 
-      {/* <Link to={"/"}>
+      {/* <NavLink to={"/"}>
         <div classname="Assessments" style={{ marginLeft: "-74px" }}>
           <img classname="image" src={asessment} alt="" />
           <span className="header-button">Assessments</span>
         </div>
-      </Link> */}
+      </NavLink> */}
 
-      <Link to={"/opportunity"}>
+      <NavLink to={"/opportunity"} setActiveClass= "active">
         <div classname="Opportunity" style={{ marginLeft: "-78px" }}>
           <img classname="image" src={Opportunity} alt="" />
           <span className="header-button">Opportunity</span>
         </div>
-      </Link>
+      </NavLink>
 
-      <Link to={"/application"}>
+      <NavLink to={"/application"} setActiveClass= "active">
         <div classname="Application" style={{ marginLeft: "-70px" }}>
           <img classname="image" src={application} alt="" />
           <span className="header-button">Applications</span>
         </div>
-      </Link>
+      </NavLink>
 
-      {/* <Link to={"/"}>
+      {/* <NavLink to={"/"}>
         <div classname="Offers" style={{ marginLeft: "-123px" }}>
           <img classname="image" src={offer} alt="" />
           <span className="header-button">Offers</span>
         </div>
-      </Link> */}
+      </NavLink> */}
 
-      <Link to={"/Profile"}>
+      <NavLink to={"/Profile"} setActiveClass= "active">
         <div classname="Resume" style={{ marginLeft: "-108px" }}>
           <img classname="image" src={resume} alt="" />
           <span className="header-button">Profile</span>
         </div>
-      </Link>
-      <Link to={"/offcampus"}>
+      </NavLink>
+      <NavLink to={"/offcampus"} setActiveClass= "active">
         <div classname="Resume" style={{ marginLeft: "-90px" }}>
           <img classname="image" src={offCampus} alt="" />
           <span className="header-button">OffCampus</span>
         </div>
-      </Link>
+      </NavLink>
+
+      {type === "ad" ? (
+        <NavLink to={"/analytics"} setActiveClass= "active">
+          <div classname="Resume" style={{ marginLeft: "-90px" }}>
+            <img classname="image" src={offCampus} alt="" />
+            <span className="header-button">Analytics</span>
+          </div>
+        </NavLink>
+      ) : ("")}
+
+      {type === "ad" ? (
+        <NavLink to={"/admin"} setActiveClass= "active">
+          <div classname="Resume" style={{ marginLeft: "-90px" }}>
+            <img classname="image" src={offCampus} alt="" />
+            <span className="header-button">Add Company</span>
+          </div>
+        </NavLink>
+      ) : ("")}
+
     </div>
   );
 };

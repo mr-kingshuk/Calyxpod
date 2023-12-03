@@ -7,7 +7,7 @@ import NewOpportunityCard from "./NewOpportunityCard2";
 import OldOpportunityCard from "./OldOpportunityCard";
 // import NewOpportunityCardTop from "./NewOpportunityCardTop";
 import { db } from "./Firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 // import NewOpportunityCardTop2 from "./NewOpportunityCardTop";
@@ -24,8 +24,19 @@ const Dashboard = () => {
   const fetchPostApplication = async () => {
     const querySnapshot = await getDocs(collection(db, "opportunities"));
     let data_list = [];
+    const userMail = localStorage.getItem("usermail");
+    const querySnapshot2 = await getDoc(doc(db, "people", userMail))
+    const opportunities = querySnapshot2.data().opportunities;
     querySnapshot.forEach((doc) => {
-      data_list.push(doc.data());
+      if(!opportunities.includes(doc.id)){
+        let data_json = doc.data()
+        data_json['doc_name'] = doc.id;
+        var date1 = new Date(data_json["end_date"].seconds * 1000);
+        var date2 = new Date();
+        if (date2 <= date1){
+          data_list.push(data_json);
+        }
+      }
     });
     setDataApplication(data_list);
   };

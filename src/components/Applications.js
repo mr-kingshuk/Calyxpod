@@ -60,6 +60,7 @@ const Applications = () => {
             return (
               <>
                 <NewOpportunityCard info={item} />
+                
                 <br />
               </>
             );

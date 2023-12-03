@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "../css/Admin.css";
 import { collection, getDoc, setDoc, doc, addDoc } from "firebase/firestore";
 import { db } from "./Firebase";
+import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 // import { toast, ToastContainer } from "react-toastify";
 // import LeftHeader from "./LeftHeader";
 // import ProfileButton from "./ProfileButton";
 const Admin = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     companyName: "",
     roleTitle: "",
@@ -69,15 +71,19 @@ const Admin = () => {
       });
       // toast.success("Company Added Successfully");
       // console.log("added");
-      return <Navigate to="/"/>
+      navigate("/", { replace: true });
     } catch (error) {
       // console.log(error);
       // toast.error("Could not Add Company");
       // console.log(error.message);
     }
   }
+  
+  const type = localStorage.getItem("acc");
   return (
     <div className="mainProfile">
+      
+    {type === "ad" ? (
       <div className="profileLeft" style={{ marginLeft: "480px" }}>
         <h1
           style={{
@@ -270,6 +276,9 @@ const Admin = () => {
         </form>
         <div style={{ height: "100px" }}></div>
       </div>
+      )  : (
+      <h1> 404 </h1>
+      )}
     </div>
   );
 };

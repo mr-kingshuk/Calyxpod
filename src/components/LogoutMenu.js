@@ -28,6 +28,7 @@ export default function LogoutMenu() {
           progress: undefined,
           theme: "light",
         });
+        localStorage.setItem("acc", "pe");
         localStorage.setItem("isLoggedIn", false);
         navigate("/login", { replace: true });
       })

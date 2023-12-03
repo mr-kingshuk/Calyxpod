@@ -7,3 +7,40 @@
 .opportunityMainRight {
   margin-left: 32px;
 }
+
+.rowout{
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+
+  padding: 10px;
+}
+
+.rowout div{
+  text-align: center;
+  font-weight: 600;
+}
+
+.id{
+  flex: 1 0 10%;
+}
+
+.name{
+  flex: 2 0 25%;
+}
+
+.email{
+  flex: 2 0 25%;
+}
+
+.branch{
+  flex: 1 0 10%;
+}
+
+.cgpa{
+  flex: 1 0 10%;
+}
+
+.phone{
+  flex: 1 0 20%;
+}

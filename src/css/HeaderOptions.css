@@ -61,3 +61,7 @@
 .Dashboard {
   position: flex;
 }
+
+.active .header-button{
+  color: red;
+}

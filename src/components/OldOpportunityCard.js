@@ -5,6 +5,7 @@ import Button from "./Button";
 import pic from "../assets/student-pic.png";
 
 const OldOpportunityCard = ({ info }) => {
+
   let profile_data = info.company_name + " - Hiring for ";
   for (let i = 0; i < info.profile.length; i++) {
     if (i === 0) {
@@ -17,6 +18,8 @@ const OldOpportunityCard = ({ info }) => {
       profile_data += info.profile[i];
     }
   }
+
+
 
   const recruit_year = parseInt(info.batch_year) + 4;
   profile_data += ". - " + recruit_year + " Batch Recruitment Event";
@@ -32,12 +35,21 @@ const OldOpportunityCard = ({ info }) => {
     profile_disc = profile_disc.slice(0, 347) + "...";
   }
 
-  var date1 = new Date(info.experience[0].date.seconds * 1000);
-  var date2 = new Date();
-  var diffTime = Math.abs(date2 - date1);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  // console.log(info.id);
-  const imgUrl = localStorage.getItem("photoURL");
+  console.log(info);
+  let diffDays, imgUrl;
+  var experienceSubmitted = false
+  if (info.experience.length != 0) {
+    experienceSubmitted = true;
+    var date1 = new Date(info.experience[0].date.seconds * 1000);
+    var date2 = new Date();
+    var diffTime = Math.abs(date2 - date1);
+    diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    imgUrl = localStorage.getItem("photoURL");
+  }
+
+
+
+
   return (
     <div className="main-old">
       <Link to={`/forum/${info.id}`}>
@@ -52,26 +64,33 @@ const OldOpportunityCard = ({ info }) => {
       <div className="detail-tag">
         <div>
           {/* <span>
-            <Button details={"FEV India"} />
-          </span> */}
+              <Button details={"FEV India"} />
+            </span> */}
         </div>
         {/* <div>
-          <span>
-            <Button details={"chutiya"} />
-          </span>
-        </div> */}
+            <span>
+              <Button details={"chutiya"} />
+            </span>
+          </div> */}
       </div>
       <br />
       <hr />
-      <div className="bottom">
-        <img src={imgUrl} alt="" />
-        <span className="name">
-          <strong>{info.experience[0].name}</strong> shared his experience
-        </span>
-        <span className="numberOfDays">{diffDays} days ago</span>
-      </div>
+      {experienceSubmitted ? (
+        <div className="bottom">
+          <img src={imgUrl} alt="" />
+          <span className="name">
+            <strong>{info.experience[0].name}</strong> shared his experience
+          </span>
+          <span className="numberOfDays">{diffDays} days ago</span>
+        </div>) : (
+        <div className="bottom">
+          <span className="name">
+            No one shared his experience
+          </span>
+        </div>
+      )}
     </div>
   );
-};
+}
 
 export default OldOpportunityCard;

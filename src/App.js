@@ -17,6 +17,8 @@ import Profile from "./components/Profile";
 import { UserContainer, UserContext } from "./components/NameContext";
 import OffCampus from "./components/OffCampus";
 import Admin from "./components/Admin";
+import Analytics from "./components/Analytics.js";
+import CompanyAnalytics from "./components/CompanyAnalytics.js";
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/offcampus" element={<OffCampus />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/companyanalytics" element={<CompanyAnalytics />} />
         </Routes>
       </BrowserRouter>
     </div>

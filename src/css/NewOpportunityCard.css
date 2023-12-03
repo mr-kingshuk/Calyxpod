@@ -5,12 +5,15 @@
   margin-top: 60px;
   position: static;
   width: 896px;
-  height: 221px;
+  /* height: 100%; */
   left: 0px;
   /* top: 1px; */
   background: #ffffff;
   box-shadow: 4px 4px 18px 1px rgba(41, 88, 128, 0.15);
   border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
 }
 .main-card h3 {
 }
